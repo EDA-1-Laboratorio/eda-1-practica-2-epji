@@ -36,12 +36,19 @@ int main() {
     for (int i = 2; i < total; i++) {
         int *actual = (ptr + i);
         
-        // --- TU CÓDIGO AQUÍ ---
+       // --- TU CÓDIGO AQUÍ ---
         // Caso A: Si *actual es mayor que *max1...
         //         max2 toma el valor de max1, y max1 apunta al actual.
+        if (*actual > *max1) {
+            max2 = max1;
+            max1 = actual;     
+        }
         // Caso B: Si *actual es mayor que *max2 (pero menor que max1)...
         //         max2 apunta al actual.
         // -----------------------
+        else if (*actual > *max2){
+            max2 = actual; 
+        }
     }
 
     // 3. Cálculo de distancia
@@ -60,3 +67,8 @@ int main() {
 // PREGUNTA: Si el max1 se encuentra en la dirección 0x100 y el max2 en la 0x108,
 // y estamos trabajando con enteros (int) de 4 bytes, 
 // ¿qué valor numérico devolverá la operación max2 - max1 y por qué no devuelve simplemente 8?
+// RESPUESTA: Devolverá el valor 2. 
+// Porque en c la resta de apuntadores no entrega la distancia en bytes, 
+// sino en número de elementos (pasos) del tipo de dato correspondiente. 
+// Como cada 'int' mide 4 bytes, el compilador divide los 8 bytes de diferencia 
+// entre el tamaño del entero.
