@@ -18,6 +18,14 @@ int main() {
 
     // --- TU CÓDIGO AQUÍ ---
     // Usa 'p' para recorrer 'bin' y contar los '1's
+    for (int i = 0; i <= 31; i++)
+    {
+        if(*(p + (31 - i)) == '1')
+
+            unos++;
+
+    }
+    
 
     printf("Total de bits '1': %d\n", unos);
     return 0;
@@ -25,4 +33,4 @@ int main() {
 
 // PREGUNTA: En la función enteroABinario, estamos pasando un int (4 bytes) y un apuntador char *. 
 // Si un int ya vive en la memoria como una secuencia de bits, 
-// ¿por qué es necesario 'convertirlo' a una cadena de caracteres para contarlos con el apuntador?
+// ¿por qué es necesario 'convertirlo' a una cadena de caracteres para contarlos con el apuntador? Es necesario porque el apuntador *p apunta a un arreglo de caracteres, por lo que para poder modificar a travez de un apuntador los valores del arreglo bin, se tiene que hacer con caracteres. Pero como se ocupa un número entero positivo para poder identificar el número binario que representa, este valor se pasa a caracteres para poder modificar el arreglo bin
